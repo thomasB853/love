@@ -75,15 +75,16 @@ class Firework:
         for p in self.particles:
             heart.draw_heart(screen, RED_PINK, (p["x"], p["y"]), p["size"], p["life"])
 
-# 文字渲染
-font = pygame.font.Font("simhei.ttf", 50)  # 黑体
-text = font.render("細水長流 直到永遠", True, (255, 255, 255))
+# 文字渲染（改用系统字体，避免文件找不到）
+font = pygame.font.SysFont("simhei", 50)  # 系统黑体，无需单独文件
+text = font.render("世水长流 直到永远", True, (255, 255, 255))
 text_rect = text.get_rect(center=(WIDTH//2, HEIGHT//2))
 
 # 主程序
 hearts = []
 fireworks = []
 clock = pygame.time.Clock()
+heart = Heart()  # 实例化用于调用 draw_heart 方法
 
 # 自动生成爱心
 pygame.time.set_timer(pygame.USEREVENT, 120)
